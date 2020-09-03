@@ -1,30 +1,38 @@
 class Rectangulo {
-  // Campos de clase - modificador private como en java
-  // modificador readonly equivale a final en java
-  private readonly alto: number;
-  private readonly ancho: number;
+  // Campos de clase
+  private alto: number;
+  private ancho: number;
+  // varible para el set
+  private _nombre: string = '';
 
   constructor(ancho: number, alto: number) {
     this.ancho = ancho;
     this.alto = alto;
-    this.getSaludo();
   }
 
-  getArea() {
+  // atributos virtuales getters y setters
+  get area() {
     return this.ancho * this.alto;
   }
 
-  getPerimetro() {
+  get perimetro() {
     return this.ancho * 2 + this.alto * 2;
   }
 
-  // metodo privado
-  private getSaludo() {
-    console.log('Hola Julio');
+  get nombre() {
+    console.log('Obtengo el nombre');
+    return this._nombre;
+  }
+
+  set nombre(value: string) {
+    console.log('Seteo el nombre');
+    this._nombre = value;
   }
 }
 
-let r1 = new Rectangulo(10, 4);
-let r2 = new Rectangulo(5, 8);
+let r1 = new Rectangulo(10, 20);
 
-console.log(r1.getArea());
+r1.nombre = 'A';
+console.log(
+  `El rectangulo ${r1.nombre}, tiene un area de ${r1.area} y un perimetro de ${r1.perimetro}`
+);
