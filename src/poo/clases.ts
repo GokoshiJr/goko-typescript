@@ -1,38 +1,40 @@
-class Rectangulo {
-  // Campos de clase
-  private alto: number;
-  private ancho: number;
-  // varible para el set
-  private _nombre: string = '';
-
-  constructor(ancho: number, alto: number) {
-    this.ancho = ancho;
-    this.alto = alto;
+class Vehiculo {
+  private fabricante: string;
+  constructor(fabricante: string) {
+    this.fabricante = fabricante;
   }
-
-  // atributos virtuales getters y setters
-  get area() {
-    return this.ancho * this.alto;
-  }
-
-  get perimetro() {
-    return this.ancho * 2 + this.alto * 2;
-  }
-
-  get nombre() {
-    console.log('Obtengo el nombre');
-    return this._nombre;
-  }
-
-  set nombre(value: string) {
-    console.log('Seteo el nombre');
-    this._nombre = value;
+  moverse() {
+    console.log(
+      `El vehiculo marca ${this.fabricante} se ha movido magicamente`
+    );
   }
 }
 
-let r1 = new Rectangulo(10, 20);
+class VehiculoTerrestre extends Vehiculo {
+  private tipo: string;
+  constructor(fabricante: string, tipo: string) {
+    super(fabricante);
+    this.tipo = tipo;
+  }
+  moverse() {
+    console.log(`bruum bruum hace mi ${this.tipo}`);
+    super.moverse();
+  }
+}
 
-r1.nombre = 'A';
-console.log(
-  `El rectangulo ${r1.nombre}, tiene un area de ${r1.area} y un perimetro de ${r1.perimetro}`
-);
+class VehiculoAereo extends Vehiculo {
+  moverse() {
+    console.log('niauuuuun');
+    super.moverse();
+  }
+}
+
+class VehiculoMaritimo extends Vehiculo {
+  moverse() {
+    console.log('el sonido del mar');
+    super.moverse();
+  }
+}
+
+let vehiculo = new VehiculoTerrestre('Yamaha', 'Moto');
+vehiculo.moverse();
