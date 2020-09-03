@@ -1,7 +1,8 @@
 class Rectangulo {
   // Campos de clase - modificador private como en java
-  private alto: number;
-  private ancho: number;
+  // modificador readonly equivale a final en java
+  private readonly alto: number;
+  private readonly ancho: number;
 
   constructor(ancho: number, alto: number) {
     this.ancho = ancho;
