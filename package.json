@@ -1,0 +1,18 @@
+{
+  "name": "goko-typescript",
+  "version": "1.0.0",
+  "description": "Codigo basico en typescript.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc src/basico/tipos.ts"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Julio Gonzalez <julioagonzalez18@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  }
+}
