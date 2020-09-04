@@ -20,4 +20,4 @@ function convertir(valor: string | number) {
 
 convertir('asdf');
 convertir(5);
-convertir(true);
+// convertir(true);
