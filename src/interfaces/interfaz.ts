@@ -1,45 +1,34 @@
-// modificadores y funciones
+// Usando interfaces con clases
 
-interface UserData {
-  readonly userName: string;
-  createdDate: Date | undefined;
-  superUser?: boolean; // superuser puede estar o no con el ?
-  readonly personal: {
-    firstName: string;
-    email: string;
-  };
-  logOut(): void;
-  rename: (userName: String) => void;
+interface Figura {
+  readonly lados: number;
+  area(): number;
+  perimetro(): number;
 }
 
-function loginUser(): UserData {
-  return {
-    userName: 'admin',
-    createdDate: new Date(),
-    // superUser: true,
-    logOut() {
-      console.log('Adios');
-    },
-    rename(userName) {
-      console.log('Todo: Rename account');
-    },
-    personal: {
-      firstName: 'Admin',
-      email: 'email@gmail.com',
-    },
-  };
+class Rectangle implements Figura {
+  // campos de clase
+  readonly ancho: number;
+  readonly alto: number;
+  lados = 4;
+  constructor(ancho: number, alto: number) {
+    this.alto = alto;
+    this.ancho = ancho;
+  }
+
+  area(): number {
+    return this.alto * this.ancho;
+  }
+  perimetro(): number {
+    return this.ancho * 2 + this.alto * 2;
+  }
 }
 
-let data: UserData = loginUser();
+let rectangle1 = new Rectangle(5, 5);
 
-/* 
-if (data.createdDate) {
-  data.createdDate.toISOString();
-} 
-*/
+function proceso(figura: Figura) {
+  figura.area();
+  figura.lados;
+}
 
-// forma segura, si es undefined no lo ejecuta ?.
-data.createdDate?.toISOString();
-
-// lo usamos si estamos seguros de que va a existir !.
-data.createdDate!.getDate();
+proceso(rectangle1);
